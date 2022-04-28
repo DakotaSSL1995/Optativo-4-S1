@@ -36,6 +36,10 @@ wd.get("https://listado.mercadolibre.cl/inmuebles/casas/")
 html_code = wd.page_source
 #Se crea un objeto apartir del html
 soup = BeautifulSoup(html_code, 'lxml')
+#Contador de resultados 
+cantidad_c = float(soup.find(class_= "ui-search-search-result__quantity-results").text.split(" ")[0].replace(".",""))
+#Contador de paginas
+NumeroP = math.ceil(cantidad_c/48)
 
 #Parceo de la direccion
 def get_address(ubicacion):
@@ -110,10 +114,6 @@ def parse_y_guardar(url_pag):
     df = pd.DataFrame({"casa_obj" :  casa_obj})
     df.to_csv('casas.csv')
 
-#Contador de resultados 
-cantidad_c = soup.findAll('span', {'class_' : "ui-search-search_result__quantity-results"}).text.split(" ")[0].replace(".","")
-#Contador de paginas
-NumeroP = math.ceil(cantidad_c/48)
 #Parseador de paginas
 for actual_pag in range(1, NumeroP+1):
   url_pag = get_page_url(actual_pag)
