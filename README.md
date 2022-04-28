@@ -5,5 +5,6 @@ Dataset creado con el fin de responder la pregunta: "¿Cuanto tiempo me tomaria 
 
 Debido a dificultades tecnicas no me fue posible trabajar este dataset desde una computador de modo que utilice la plataforma Google Colab para poder trabajar. Por eso se podra percibir que las primeras lineas son solo las librerias para poder instalar las extenciones necesarias. 
 
+DataSet aun no añadido
 
 
